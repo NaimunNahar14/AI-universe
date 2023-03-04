@@ -80,11 +80,11 @@ const modalDetails = async id =>{
     modalDiv.innerHTML = `
     <div  class="row row-cols-1 row-cols-md-2 container-fluid" style= "height: 400px: width: 400px;">
               <div class="d-flex justify-content-lg-center container-fluid ">
-                <div class="col-md-6 p-2 rounded border border-danger ms-5" style="height: 600px; width: 300px;">
+                <div class="col-md-6 p-2 rounded border border-danger ms-5" style="height: 600px; width: 300px; background-color: FFFFFF;">
                   <div>
                     <h5 id="modal-container">${ai.description}</h5>
                     <div class="d-flex justify-content-evenly mt-3 mb-5">
-                      <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
+                      <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px; background-color:FFFFFF; color:03A30A">
                         <p >${ai.pricing[0].price ? ai.pricing[0].price :"Free of cost/"}</p>
                         <p >${ai.pricing[0].plan}</p>
                       </div>

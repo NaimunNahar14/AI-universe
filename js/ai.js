@@ -59,6 +59,18 @@ const toggleSpinner = isLoading => {
         loaderSection.classList.add('d-none');
     }
 }
+const sortData = ai =>{
+    console.log(ai);
+    let dateArray = ["2022-05-01", "2022-01-01", "2022-08-01", "2022-04-01"];
+
+// Sort the date array in ascending order
+dateArray.sort((a, b) =>  new
+Date(a.published_in)-new
+Date(b.published_in));
+
+// Output the sorted date array
+console.log(dateArray)
+}
 const modalDetails = async id =>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);

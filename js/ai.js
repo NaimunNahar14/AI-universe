@@ -47,8 +47,7 @@ const displayAis = ais =>{
         `
         aisContainer.appendChild(aiDiv);
     });
-    toggleSpinner(false);
-    
+    toggleSpinner(false); 
 }
 // spinner
 const toggleSpinner = isLoading => {
@@ -63,16 +62,13 @@ const toggleSpinner = isLoading => {
 const sortData = ai =>{
     console.log(ai);
     let dateArray = ["2022-05-01", "2022-01-01", "2022-08-01", "2022-04-01"];
-
 // Sort the date array in ascending order
 dateArray.sort((a, b) =>  new
 Date(a.published_in)-new
 Date(b.published_in));
-
 // Output the sorted date array
 console.log(dateArray)
 }
-
 // modal
 const modalDetails = async id =>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
@@ -117,10 +113,8 @@ const modalDetails = async id =>{
                         <ul>
                           <li>${ai.integrations[0] ? ai.integrations[0]:"no data found"}</li>
                           <li >${ai.integrations[1] ? ai.integrations[0]:"no data found"}</li>
-                          <li>${ai.integrations[2] ? ai.integrations[0]:"no data found"}</li>
-                          
+                          <li>${ai.integrations[2] ? ai.integrations[0]:"no data found"}</li> 
                         </ul>
-  
                       </div>
                     </div>
                   </div>
@@ -134,18 +128,12 @@ const modalDetails = async id =>{
                     <h4>${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not text found"}</h4>
                     <p >${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not yet! take a break"}</p>
                   </div>
-  
                 </div>
-  
               </div>
-  
             </div>
-    
     `;
     modalContainer.appendChild(modalDiv);
-
  }
- 
 loadAi();
 
 

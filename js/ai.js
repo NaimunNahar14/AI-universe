@@ -130,6 +130,7 @@ const modalDetails = async id =>{
     modalContainer.appendChild(modalDiv);
 
  }
+ 
 
 loadAi();
 

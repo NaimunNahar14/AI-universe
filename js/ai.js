@@ -1,24 +1,24 @@
 
-const loadAi = async() =>{
-    const url = `https://openapi.programming-hero.com/api/ai/tools`; 
+const loadAi = async () => {
+    const url = `https://openapi.programming-hero.com/api/ai/tools`;
     const res = await fetch(url);
     const data = await res.json();
-    displayAis(data.data.tools.slice(0,6));
-   toggleSpinner(true);
+    displayAis(data.data.tools.slice(0, 6));
+    toggleSpinner(true);
 }
 const showALL = async () => {
-    const url = `https://openapi.programming-hero.com/api/ai/tools`; 
+    const url = `https://openapi.programming-hero.com/api/ai/tools`;
     const res = await fetch(url);
     const data = await res.json();
-    displayAis(data.data.tools); 
+    displayAis(data.data.tools);
 
- }
+}
 //Cards
-const displayAis = ais =>{
+const displayAis = ais => {
     const aisContainer = document.getElementById('ai-container');
     aisContainer.textContent = ''
-    ais.forEach(ai =>{
-        const aiDiv  = document.createElement('div');
+    ais.forEach(ai => {
+        const aiDiv = document.createElement('div');
         aiDiv.classList.add('col');
         aiDiv.innerHTML = `
         <div class="card p-4">
@@ -47,36 +47,36 @@ const displayAis = ais =>{
         `
         aisContainer.appendChild(aiDiv);
     });
-    toggleSpinner(false); 
+    toggleSpinner(false);
 }
 // spinner
 const toggleSpinner = isLoading => {
-    const loaderSection =document.getElementById('loader');
-    if(isLoading){
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
         loaderSection.classList.remove('d-none')
     }
-    else{
+    else {
         loaderSection.classList.add('d-none');
     }
 }
-const sortData = ai =>{
+const sortData = ai => {
     console.log(ai);
     let dateArray = ["2022-05-01", "2022-01-01", "2022-08-01", "2022-04-01"];
-// Sort the date array in ascending order
-dateArray.sort((a, b) =>  new
-Date(a.published_in)-new
-Date(b.published_in));
-// Output the sorted date array
-console.log(dateArray)
+    // Sort the date array in ascending order
+    dateArray.sort((a, b) => new
+        Date(a.published_in) - new
+            Date(b.published_in));
+    // Output the sorted date array
+    console.log(dateArray)
 }
 // modal
-const modalDetails = async id =>{
+const modalDetails = async id => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayModalDetails(data.data);   
+    displayModalDetails(data.data);
 }
- const displayModalDetails = ai =>{
+const displayModalDetails = ai => {
     console.log(ai);
     const modalContainer = document.getElementById('modal-body');
     modalContainer.textContent = '';
@@ -89,15 +89,15 @@ const modalDetails = async id =>{
                     <h5 id="modal-container">${ai.description}</h5>
                     <div class="d-flex justify-content-evenly mt-3 mb-5">
                       <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px; background-color:FFFFFF; color:03A30A">
-                        <p >${ai.pricing[0].price ? ai.pricing[0].price :"Free of cost/"}</p>
+                        <p >${ai.pricing[0].price ? ai.pricing[0].price : "Free of cost/"}</p>
                         <p >${ai.pricing[0].plan}</p>
                       </div>
                       <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
-                        <p>${ai.pricing[1].price ? ai.pricing[1].price :"Free of cost/"}</p>
+                        <p>${ai.pricing[1].price ? ai.pricing[1].price : "Free of cost/"}</p>
                         <p >${ai.pricing[1].plan}</p>
                       </div>
                       <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
-                        <p >${ai.pricing[2].price ? ai.pricing[2].price :"Free of cost/"}</p>
+                        <p >${ai.pricing[2].price ? ai.pricing[2].price : "Free of cost/"}</p>
                         <p>${ai.pricing[2].plan}</p>
                       </div>
                     </div>
@@ -111,9 +111,9 @@ const modalDetails = async id =>{
                       </div>
                       <div>Integration:
                         <ul>
-                          <li>${ai.integrations[0] ? ai.integrations[0]:"no data found"}</li>
-                          <li >${ai.integrations[1] ? ai.integrations[0]:"no data found"}</li>
-                          <li>${ai.integrations[2] ? ai.integrations[0]:"no data found"}</li> 
+                          <li>${ai.integrations[0] ? ai.integrations[0] : "no data found"}</li>
+                          <li >${ai.integrations[1] ? ai.integrations[0] : "no data found"}</li>
+                          <li>${ai.integrations[2] ? ai.integrations[0] : "no data found"}</li> 
                         </ul>
                       </div>
                     </div>
@@ -121,19 +121,19 @@ const modalDetails = async id =>{
                 </div>
                 <div class="col-md-6 p-1 mb-2 border rounded ms-3 container-fluid " style="height: 400px; width: 300px;">
                   <div class="text-end">
-                    <button id="button01" type="button" class="btn btn-danger" style="position:relative; top:43px; right:10px;">${(ai.accuracy.score)*100 ? (ai.accuracy.score)*10:""}% Accuracy</button>
+                    <button id="button01" type="button" class="btn btn-danger" style="position:relative; top:43px; right:10px;">${(ai.accuracy.score) * 100 ? (ai.accuracy.score) * 10 : ""}% Accuracy</button>
                   </div>
                   <img id="modal-Image" src="${ai.image_link[0]}" alt="No image Found ${ai.tool_name}" class="img-fluid rounded-start ">
                   <div class="mt-2 text-centre" >
-                    <h4>${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not text found"}</h4>
-                    <p >${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not yet! take a break"}</p>
+                    <h4>${ai.input_output_examples[0].input ? ai.input_output_examples[0].input : "Not text found"}</h4>
+                    <p >${ai.input_output_examples[0].input ? ai.input_output_examples[0].input : "Not yet! take a break"}</p>
                   </div>
                 </div>
               </div>
             </div>
     `;
     modalContainer.appendChild(modalDiv);
- }
+}
 loadAi();
 
 

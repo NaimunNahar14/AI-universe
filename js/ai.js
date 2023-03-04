@@ -13,7 +13,7 @@ const showALL = async () => {
     displayAis(data.data.tools); 
 
  }
-
+//Cards
 const displayAis = ais =>{
     const aisContainer = document.getElementById('ai-container');
     aisContainer.textContent = ''
@@ -50,6 +50,7 @@ const displayAis = ais =>{
     toggleSpinner(false);
     
 }
+// spinner
 const toggleSpinner = isLoading => {
     const loaderSection =document.getElementById('loader');
     if(isLoading){
@@ -71,6 +72,8 @@ Date(b.published_in));
 // Output the sorted date array
 console.log(dateArray)
 }
+
+// modal
 const modalDetails = async id =>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
@@ -143,7 +146,6 @@ const modalDetails = async id =>{
 
  }
  
-
 loadAi();
 
 

@@ -74,40 +74,68 @@ const modalDetails = async id =>{
 }
  const displayModalDetails = ai =>{
     console.log(ai);
-    const modalTitle = document.getElementById('modal-container');
-    modalTitle.innerHTML = ai.description;
-    const modalFreeCost = document.getElementById('modal-freecost');
-    modalFreeCost.innerHTML = ai.pricing[0].price ? ai.pricing[0].price :"Free of cost/";
-    const modalPlan = document.getElementById('modal-plan');
-    modalPlan.innerHTML = ai.pricing[0].plan;
-    const modalFreeCost01 = document.getElementById('modal-freecost01');
-    modalFreeCost01.innerHTML = ai.pricing[1].price ? ai.pricing[1].price :"Free of cost/";
-    const modalPlan01 = document.getElementById('modal-plan01');
-    modalPlan01.innerHTML = ai.pricing[1].plan;
-    const modalFreeCost02 = document.getElementById('modal-freecost02');
-    modalFreeCost02.innerHTML = ai.pricing[2].price ? ai.pricing[2].price :"Free of cost/";
-    const modalPlan02 = document.getElementById('modal-plan02');
-    modalPlan02.innerHTML = ai.pricing[2].plan;
-    const modalFeaturesName01 = document.getElementById('F-name01');
-    modalFeaturesName01.innerHTML = ai.features[1].feature_name;
-    const modalFeaturesName02 = document.getElementById('F-name02');
-    modalFeaturesName02.innerHTML = ai.features[2].feature_name;
-    const modalFeaturesName03 = document.getElementById('F-name03');
-    modalFeaturesName03.innerHTML = ai.features[3].feature_name;
-    const modalIntegration01 = document.getElementById('Int-01');
-    modalIntegration01.innerHTML = ai.integrations[0] ? ai.integrations[0]:"no data found";
-    const modalIntegration02 = document.getElementById('Int-2');
-    modalIntegration02.innerHTML = ai.integrations[1] ? ai.integrations[1]:"no data found";
-    const modalIntegration03 = document.getElementById('Int-3');
-    modalIntegration03.innerHTML = ai.integrations[2] ? ai.integrations[2]:"no data found";
-    const modalAccuracyBtn = document.getElementById('button01');
-    modalAccuracyBtn.innerHTML = ai.accuracy.score*100 ? ai.accuracy.score*10:"% Accuracy";
-    const modalImages = document.getElementById('modal-Image');
-    modalImages.innerHTML = ai.image_link[1];
-    const modalText = document.getElementById('modal-text');
-    modalText.innerHTML = ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not text found";
-    const modalParagraph = document.getElementById('modal-para');
-    modalParagraph.innerHTML = ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not yet! take a break";
+    const modalContainer = document.getElementById('modal-body');
+    modalContainer.textContent = '';
+    const modalDiv = document.createElement('div');
+    modalDiv.innerHTML = `
+    <div  class="row row-cols-1 row-cols-md-2 container-fluid" style= "height: 400px: width: 400px;">
+              <div class="d-flex justify-content-lg-center container-fluid ">
+                <div class="col-md-6 p-2 rounded border border-danger ms-5" style="height: 600px; width: 300px;">
+                  <div>
+                    <h5 id="modal-container">${ai.description}</h5>
+                    <div class="d-flex justify-content-evenly mt-3 mb-5">
+                      <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
+                        <p >${ai.pricing[0].price ? ai.pricing[0].price :"Free of cost/"}</p>
+                        <p >${ai.pricing[0].plan}</p>
+                      </div>
+                      <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
+                        <p>${ai.pricing[1].price ? ai.pricing[1].price :"Free of cost/"}</p>
+                        <p >${ai.pricing[1].plan}</p>
+                      </div>
+                      <div class="me-2 border rounded-3 p-1 text-center container-fluid" style="height: 150px; width: 150px;">
+                        <p >${ai.pricing[2].price ? ai.pricing[2].price :"Free of cost/"}</p>
+                        <p>${ai.pricing[2].plan}</p>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-evenly mt-2 container-fluid">
+                      <div>Feature:
+                        <ul>
+                          <li >${ai.features[1].feature_name}</li>
+                          <li >${ai.features[2].feature_name}</li>
+                          <li >${ai.features[3].feature_name}</li>
+                        </ul>
+                      </div>
+                      <div>Integration:
+                        <ul>
+                          <li>${ai.integrations[0] ? ai.integrations[0]:"no data found"}</li>
+                          <li >${ai.integrations[1] ? ai.integrations[0]:"no data found"}</li>
+                          <li>${ai.integrations[2] ? ai.integrations[0]:"no data found"}</li>
+                          
+                        </ul>
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 p-1 mb-2 border rounded ms-3 container-fluid " style="height: 400px; width: 300px;">
+                  <div class="text-end">
+                    <button id="button01" type="button" class="btn btn-danger" style="position:relative; top:43px; right:10px;">${(ai.accuracy.score)*100 ? (ai.accuracy.score)*10:""}% Accuracy</button>
+                  </div>
+                  <img id="modal-Image" src="${ai.image_link[0]}" alt="No image Found ${ai.tool_name}" class="img-fluid rounded-start ">
+                  <div class="mt-2 text-centre" >
+                    <h4>${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not text found"}</h4>
+                    <p >${ai.input_output_examples[0].input ? ai.input_output_examples[0].input:"Not yet! take a break"}</p>
+                  </div>
+  
+                </div>
+  
+              </div>
+  
+            </div>
+    
+    `;
+    modalContainer.appendChild(modalDiv);
+
  }
 
 loadAi();

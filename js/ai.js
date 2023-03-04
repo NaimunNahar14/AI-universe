@@ -39,13 +39,10 @@ const displayAis = ais =>{
             <p class="card-text"><i class="fa-regular fa-calendar mx-2"></i>${ai.published_in}</p>
             </div>
             <div>
-                        <button onclick = "modalDetails('${ai.id}')"  href="#" class="btn bg-danger text-light rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
-                     
-                    
+                        <button onclick = "modalDetails('${ai.id}')"  href="#" class="btn bg-danger text-light rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>    
                 </div>
         </div>
-        
-               
+                 
         </div>
         `
         aisContainer.appendChild(aiDiv);
@@ -53,7 +50,6 @@ const displayAis = ais =>{
     toggleSpinner(false);
     
 }
-
 const toggleSpinner = isLoading => {
     const loaderSection =document.getElementById('loader');
     if(isLoading){
@@ -63,14 +59,11 @@ const toggleSpinner = isLoading => {
         loaderSection.classList.add('d-none');
     }
 }
-
 const modalDetails = async id =>{
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayModalDetails(data.data);
-    
-    
+    displayModalDetails(data.data);   
 }
  const displayModalDetails = ai =>{
     console.log(ai);
